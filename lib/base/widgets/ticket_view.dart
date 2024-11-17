@@ -10,7 +10,8 @@ import 'package:flutter_demo/base/widgets/ticket_middle_curvy_part.dart';
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
   final bool isHorisontallyScrollable;
-  const TicketView({super.key, required this.ticket, this.isHorisontallyScrollable = true});
+  final bool? isColor;
+  const TicketView({super.key, required this.ticket, this.isHorisontallyScrollable = true, this.isColor});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class TicketView extends StatelessWidget {
 
     return SizedBox(
       width: size.width*0.85,
-      height: size.height*0.22,
+      height: size.height*0.21,
       child: Container(
         margin: EdgeInsets.only(right: isHorisontallyScrollable ? 16 : 0),
         child: Column(
@@ -27,7 +28,7 @@ class TicketView extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppStyles.ticketBlue,
+                color: isColor == null ? AppStyles.ticketBlue : AppStyles.ticketWhite,
                 borderRadius: const BorderRadius.only(topLeft : Radius.circular(21), topRight: Radius.circular(21))
               ),
               child: Column(
@@ -36,24 +37,24 @@ class TicketView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextPlaceholderSize3(text: ticket["from"]["code"]),
+                      TextPlaceholderSize3(text: ticket["from"]["code"], isColor: isColor,),
                       Expanded(child: Container()),
-                      const BigDot(),
+                      BigDot(isColor: isColor,),
                       Expanded(child: Stack(children: [
-                        const SizedBox(
+                        SizedBox(
                           height: 24,
-                          child: DynamicPlaneTracerDashesWidget(randonDivider: 7,),
+                          child: DynamicPlaneTracerDashesWidget(randonDivider: 7, isColor: isColor,),
                         ),
                         Center(
                           child: Transform.rotate(
                           angle: 1.57,
-                          child: const Icon(
+                          child: Icon(
                             Icons.local_airport_rounded, 
-                            color: Colors.white,)),)
+                            color: isColor == null ? Colors.white : AppStyles.alternativePlaneColor,)),)
                       ],)),
-                      const BigDot(),
+                      BigDot(isColor: isColor,),
                       Expanded(child: Container()),
-                      TextPlaceholderSize3(text: ticket["to"]["code"])
+                      TextPlaceholderSize3(text: ticket["to"]["code"], isColor: isColor,)
                     ],
                   ),
             
@@ -65,14 +66,14 @@ class TicketView extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: 100,
-                        child: TextPlaceholderSize4(text: ticket["from"]["name"]),
+                        child: TextPlaceholderSize4(text: ticket["from"]["name"], isColor: isColor),
                       ),
                       Expanded(child: Container()),
-                      TextPlaceholderSize4(text: ticket["flying_time"]),
+                      TextPlaceholderSize4(text: ticket["flying_time"], isColor: isColor,),
                       Expanded(child: Container()),
                       SizedBox(
                         width: 100,
-                        child: TextPlaceholderSize4(text: ticket["to"]["name"], align: TextAlign.end,),
+                        child: TextPlaceholderSize4(text: ticket["to"]["name"], align: TextAlign.end, isColor: isColor,),
                       ),
                     ],
                   )
@@ -82,11 +83,11 @@ class TicketView extends StatelessWidget {
             ),
             // middle curvy part wuth dashes
             Container(
-              color: AppStyles.ticketOrange,
-              child: const Row(
+              color: isColor == null ? AppStyles.ticketOrange : AppStyles.ticketWhite,
+              child: Row(
                 children: [
                   TicketMiddleCurvyPart(isRight: true,),
-                  Expanded(child: DynamicPlaneTracerDashesWidget(randonDivider: 16, width: 6,)),
+                  Expanded(child: DynamicPlaneTracerDashesWidget(randonDivider: 16, width: 6, isColor: isColor,)),
                   TicketMiddleCurvyPart(isRight: false,)
                 ],
               ),
@@ -95,8 +96,9 @@ class TicketView extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppStyles.ticketOrange,
-                borderRadius: const BorderRadius.only(bottomLeft : Radius.circular(21), bottomRight: Radius.circular(21))
+                color: isColor == null ? AppStyles.ticketOrange : AppStyles.ticketWhite,
+                borderRadius: isColor == null ? const BorderRadius.only(bottomLeft : Radius.circular(21), bottomRight: Radius.circular(21)) 
+                : const BorderRadius.only(bottomLeft : Radius.circular(0), bottomRight: Radius.circular(0))
               ),
               child: Column(
                 children: [
@@ -107,16 +109,20 @@ class TicketView extends StatelessWidget {
                       ColumnTextPlaceholder(
                         topText: ticket["date"], 
                         bottomText: "Date", 
-                        alignment: CrossAxisAlignment.start,
+                        alignment: CrossAxisAlignment.start, 
+                        isColor: isColor,
                         ),
                       ColumnTextPlaceholder(
                         topText: ticket["departure_time"], 
                         bottomText: "Departure time", 
-                        alignment: CrossAxisAlignment.center),
+                        alignment: CrossAxisAlignment.center,
+                        isColor: isColor),
+                        
                       ColumnTextPlaceholder(
                         topText: ticket["number"].toString(), 
                         bottomText: "Number", 
-                        alignment: CrossAxisAlignment.end)
+                        alignment: CrossAxisAlignment.end,
+                        isColor: isColor),
                     ],
                   ),
             

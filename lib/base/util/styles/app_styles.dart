@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
-Color primary = const Color(0xFF687daf);
-
 class AppStyles {
   static Color bgColor = const Color.fromARGB(255, 240, 240, 240);
-  static Color primaryColor = primary;
+  static Color primaryColor = const Color.fromRGBO(104, 125, 175, 1);
   static Color textColor = const Color.fromARGB(255, 71, 71, 71);
   static Color ticketBlue = const Color.fromRGBO(82, 103, 153, 1);
   static Color ticketOrange = const Color.fromRGBO(243, 123, 103, 1);
+  static Color planeColor = const Color.fromRGBO(191, 194, 223, 1);
+  static Color findTicketColor = const Color.fromRGBO(17, 48, 206, 0.851);
+  static Color circleColor = const Color.fromRGBO(24, 153, 153, 1);
+  static Color ticketWhite = const Color.fromRGBO(255, 255, 255, 1);
+  static Color alternativeTicketViewColor = const Color.fromRGBO(138, 204, 247, 1);
+  static Color alternativePlaneColor = const Color.fromARGB(255, 136, 165, 184);
+
 
   static TextStyle linkStyle = TextStyle(
     fontSize: 16, fontWeight: FontWeight.w500, color: AppStyles.textColor);

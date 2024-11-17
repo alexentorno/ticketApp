@@ -16,8 +16,8 @@ class ViewAllTicketsScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: ticketList.map((ticket) => Container(
-                margin: EdgeInsets.only(bottom: 20),
-                child: TicketView(ticket: ticket, isHorisontallyScrollable: false,)
+                margin: const EdgeInsets.only(bottom: 20),
+                child: TicketView(ticket: ticket, isHorisontallyScrollable: false)
                 )
               ).toList(),
             ),

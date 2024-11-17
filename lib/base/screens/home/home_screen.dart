@@ -1,5 +1,6 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/base/screens/home/widgets/hotel_frame.dart';
 import 'package:flutter_demo/base/util/app_json.dart';
 import 'package:flutter_demo/base/util/app_routes.dart';
 import 'package:flutter_demo/base/util/media.dart';
@@ -22,6 +23,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +59,6 @@ class HomeScreen extends StatelessWidget {
                         color: const Color.fromARGB(255, 248, 249, 255)
                       ),
                   child: const Row(
-                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(FluentSystemIcons.ic_fluent_search_regular, color: Color.fromARGB(255, 32, 87, 114)),
                       Text("Search"),
@@ -74,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: ticketList.map((singleTicket) => TicketView(ticket: singleTicket)
+                    children: ticketList.map((singleTicket) => TicketView(ticket: singleTicket,)
                     ).toList(),
                   )
                 ),
@@ -86,6 +87,16 @@ class HomeScreen extends StatelessWidget {
                     print("Hello")
                   },
                 ),
+                const SizedBox(height: 20),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: hotelList
+                          .map((hotel) =>
+                          HotelFrame(hotel: hotel))
+                          .toList(),
+                  ),
+                )
               ],
             ),
           ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/base/util/styles/app_styles.dart';
 
 class DynamicPlaneTracerDashesWidget extends StatelessWidget {
   final int randonDivider;
   final double width;
-
-  const DynamicPlaneTracerDashesWidget({super.key, required this.randonDivider, this.width = 3});
+  final bool? isColor;
+  const DynamicPlaneTracerDashesWidget({super.key, required this.randonDivider, this.width = 3, this.isColor});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class DynamicPlaneTracerDashesWidget extends StatelessWidget {
         children: List.generate((constraints.constrainWidth()/randonDivider).floor(), (index) => SizedBox(
           width: width,
           height: 1,
-          child: const DecoratedBox(decoration: BoxDecoration( color: Colors.white)),
+          child: DecoratedBox(decoration: BoxDecoration( color: isColor == null ? Colors.white : AppStyles.alternativeTicketViewColor)),
         )),
       );
     });
