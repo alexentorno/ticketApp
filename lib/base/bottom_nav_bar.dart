@@ -25,7 +25,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-
     setState(() {
       _selectedIndex = index;      
     });
@@ -35,7 +34,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
         backgroundColor: AppStyles.bgColor,
         body: appScreens[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(

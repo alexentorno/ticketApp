@@ -115,21 +115,39 @@ List<Map<String, dynamic>> ticketList = [
 
 List<Map<String, dynamic>> hotelList = [
   {
-    'image': 'hotel_room.png',
+    'image': 'pool_view.png',
     'place': 'Open Space',
     'destination': 'London',
-    'price': 25
+    'price': 25,
+    'detail': 'A cozy open-space hotel room featuring a modern design with minimalist furniture. Includes high-speed Wi-Fi, a queen-size bed, a workspace, and a flat-screen TV. Perfectly situated near major attractions, offering a quiet retreat in the bustling city of London.',
+    'images': [
+      'city_view_1.png',
+      'city_view_2.png',
+      'city_view_3.png'
+    ]
   },
   {
     'image': 'hotel_room_1.png',
     'place': 'Global Will',
     'destination': 'London',
-    'price': 40
+    'price': 40,
+    'detail': 'Experience ultimate comfort at Global Will with stylish interiors and premium facilities. This room boasts a king-size bed, a private balcony, and access to an exclusive lounge. Located in a vibrant neighborhood, it\'s ideal for both relaxation and exploring London\'s rich culture.',
+    'images': [
+      'city_view_1.png',
+      'city_view_2.png',
+      'city_view_3.png'
+    ]
   },
   {
-    'image': 'hotel_room_view_1.png',
+    'image': 'hotel_room.png',
     'place': 'Tallest Building',
     'destination': 'Dubai',
-    'price': 68
+    'price': 68,
+    'detail': 'Indulge in luxury at the Tallest Building, offering unparalleled views of Dubai\'s skyline. This suite includes a spacious living area, marble bathrooms, and floor-to-ceiling windows. Guests enjoy access to a rooftop infinity pool, fine dining restaurants, and a world-class spa.',
+    'images': [
+      'hotel_room_view_1.png',
+      'hotel_room_view_2.png',
+      'hotel_room_view_3.png'
+    ]
   },
 ];

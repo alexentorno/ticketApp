@@ -8,6 +8,6 @@ class AppRoutes{
 
   static const allHotels = "/all_hotels";
 
-  static const hotelDetail = "/hotel_detail";
+  static const hotelDetail = "/hotel_screen";
 
 } 
