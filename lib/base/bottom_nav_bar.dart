@@ -1,46 +1,42 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/base/screens/home/home_screen.dart';
+import 'package:flutter_demo/base/screens/profile/profile_screen.dart';
 import 'package:flutter_demo/base/screens/search/search_screen.dart';
 import 'package:flutter_demo/base/screens/ticket_data/ticket_screen.dart';
 import 'package:flutter_demo/base/util/styles/app_styles.dart';
+import 'package:flutter_demo/controllers/bottom_nav_controller.dart';
+import 'package:get/get.dart';
 
-class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+class BottomNavBar extends StatelessWidget {
+  BottomNavBar({super.key});
+  
+  //dependency injection part
+  final BottomNavController controller = Get.put(BottomNavController());
 
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends State<BottomNavBar> {
   // list is iterated using list index
   final appScreens = [
     const HomeScreen(),
     const SearchScreen(),
     const TicketScreen(),
-    const Center(child: Text("Profile"))
+    const ProfileScreen()
   ];
 
   // change our index for bottom nav bar
-  int _selectedIndex = 0;
+  
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;      
-    });
-    //print("Tapped index is $_selectedIndex");
-  }
-
+  // void _onItemTapped(int index) {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(() {
+        return Scaffold(
         backgroundColor: AppStyles.bgColor,
-        body: appScreens[_selectedIndex],
+        body: appScreens[controller.selectedIndex.value],
         bottomNavigationBar: BottomNavigationBar(
 
-          currentIndex: _selectedIndex,
+          currentIndex: controller.selectedIndex.value,
 
-          onTap: _onItemTapped,
+          onTap: controller.onItemTapped,
           
           selectedItemColor: const Color.fromARGB(255, 32, 87, 114),
           
@@ -71,5 +67,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 label: 'Profile'),
           ],
         ));
+    });
   }
 }

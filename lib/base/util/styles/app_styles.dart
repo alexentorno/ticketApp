@@ -12,6 +12,8 @@ class AppStyles {
   static Color ticketWhite = const Color.fromRGBO(255, 255, 255, 1);
   static Color alternativeTicketViewColor = const Color.fromRGBO(138, 204, 247, 1);
   static Color alternativePlaneColor = const Color.fromARGB(255, 136, 165, 184);
+  static Color profileStatusColor = const Color.fromRGBO(254, 244, 243, 1);
+  static Color profileStatusColor2 = const Color.fromRGBO(82, 103, 153, 1);
 
 
   static TextStyle linkStyle = TextStyle(

@@ -1,48 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/base/util/styles/app_styles.dart';
+import 'package:flutter_demo/controllers/text_expansion_controller.dart';
+import 'package:get/get.dart';
 
-class ExpandedText extends StatefulWidget {
+class ExpandedText extends StatelessWidget {
   final String text;
-  const ExpandedText({super.key, required this.text});
+  ExpandedText({super.key, required this.text});
 
-  @override
-  State<ExpandedText> createState() => _ExpandedTextState();
-}
-
-class _ExpandedTextState extends State<ExpandedText> {
-
-  bool isExpanded = false;
-
-    _toggleExpansion() {
-      setState(() {
-        isExpanded = !isExpanded;
-      });
-    }
+  final TextExpansionController controller = Get.put(TextExpansionController());
 
   @override
   Widget build(BuildContext context) {
-    
-    var textWidget = Text(
-      widget.text,
-      maxLines: isExpanded ? null : 4,
-      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
-    );
+    return Obx(() {
 
-    return Column(
+      var textWidget = Text(
+        text,
+        maxLines: controller.isExpanded.value ? null : 4,
+        overflow: controller.isExpanded.value ? TextOverflow.visible : TextOverflow.ellipsis,
+      );
+
+      return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         textWidget,
         GestureDetector(
           onTap: () {
-            _toggleExpansion();
+            controller.toggleExpansion();
           },
           child: Text(
-            isExpanded ? "Hide" : "Learn more",
+            controller.isExpanded.value ? "Hide" : "Learn more",
             style: AppStyles.headlineStyle4.copyWith(
               color: AppStyles.primaryColor),
           ),
         )
       ],
     );
+    });
   }
 }
